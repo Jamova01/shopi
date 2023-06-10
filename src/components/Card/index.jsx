@@ -10,19 +10,25 @@ const Card = ({ data }) => {
         setProductToShow,
         setCartProducts,
         cartProducts,
-    } = useContext(ShoppingCartContext)
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+        closeProductDetail } = useContext(ShoppingCartContext)
 
     const showProduct = (productDetail) => {
         openProductDetail()
         setProductToShow(productDetail)
+        closeCheckoutSideMenu()
     }
 
-    const addProductsToCart = (productData) => {
+    const addProductsToCart = (event, productData) => {
+        event.stopPropagation()
         setCount(count + 1)
         setCartProducts([
             ...cartProducts,
             productData
         ])
+        openCheckoutSideMenu()
+        closeProductDetail()
         console.log('CART:', cartProducts);
     }
 
@@ -38,7 +44,7 @@ const Card = ({ data }) => {
                 <img className='w-full h-full object-cover rounded-lg' src={data.images} alt={data.title} />
                 <div
                     className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-                    onClick={() => addProductsToCart(data)}
+                    onClick={(event) => addProductsToCart(event, data)}
                 >
                     <PlusIcon className='h-6 w-6 text-black' />
                 </div>
