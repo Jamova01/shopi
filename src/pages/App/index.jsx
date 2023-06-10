@@ -17,6 +17,7 @@ import SignIn from '../SignIn'
 
 // Styles
 import './App.css'
+import CheckoutSideMenu from '../../components/CheckoutSideMenu'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -38,6 +39,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
         <Navbar />
+        <CheckoutSideMenu />
       </BrowserRouter>
     </ShoppingCartPrivider>
   )
