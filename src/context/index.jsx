@@ -17,6 +17,11 @@ export const ShoppingCartPrivider = ({ children }) => {
     // Shopping Cart - Add products to cart
     const [cartProducts, setCartProducts] = useState([])
 
+    // Checkout side menu - Open/Close
+    const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
+    const openCheckoutSideMenu = () => {setIsCheckoutSideMenuOpen(true)}
+    const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
+
     return (
         <ShoppingCartContext.Provider value={
             {
@@ -28,7 +33,10 @@ export const ShoppingCartPrivider = ({ children }) => {
                 productToShow,
                 setProductToShow,
                 cartProducts,
-                setCartProducts
+                setCartProducts,
+                isCheckoutSideMenuOpen,
+                openCheckoutSideMenu,
+                closeCheckoutSideMenu
             }
         }>
             {children}
