@@ -1,6 +1,4 @@
 import { XMarkIcon } from '@heroicons/react/24/solid'
-import { ShoppingCartContext } from '../../context'
-import { useContext } from 'react'
 
 const OrderCard = (props) => {
     const { id, title, imageUrl, price, handleDelete } = props
