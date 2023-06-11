@@ -3,8 +3,7 @@ import { ShoppingCartContext } from '../../context'
 import { useContext } from 'react'
 
 const OrderCard = (props) => {
-    const { title, imageUrl, price } = props
-    const { closeCheckoutSideMenu } = useContext(ShoppingCartContext)
+    const { id, title, imageUrl, price, handleDelete } = props
 
     return (
         <div className='flex justify-between items-center'>
@@ -19,7 +18,7 @@ const OrderCard = (props) => {
                 <p className='text-lg font-medium'>{price}</p>
                 <XMarkIcon
                     className='h-6 w-6 text-black cursor-pointer'
-                    onClick={closeCheckoutSideMenu}
+                    onClick={() => handleDelete(id)}
                 />
             </div>
         </div>
