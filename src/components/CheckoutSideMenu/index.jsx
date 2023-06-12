@@ -9,11 +9,25 @@ const CheckoutSideMenu = () => {
         isCheckoutSideMenuOpen,
         closeCheckoutSideMenu,
         cartProducts,
-        setCartProducts } = useContext(ShoppingCartContext)
+        setCartProducts,
+        order,
+        setOrder } = useContext(ShoppingCartContext)
 
     const handleDelete = (id) => {
         const filteredProducts = cartProducts.filter(product => product.id != id)
         setCartProducts(filteredProducts)
+        setCartProducts([])
+    }
+
+    const handleCheckout = () => {
+        const orderToAdd = {
+            date: '01.02.23',
+            products: cartProducts,
+            totalProducts: cartProducts.length,
+            totalPrice: totalPrice(cartProducts)
+        }
+        setOrder([...order, orderToAdd])
+        setCartProducts([])
     }
 
     return (
@@ -28,7 +42,7 @@ const CheckoutSideMenu = () => {
                     <XMarkIcon className='h-6 w-6 text-black cursor-pointer' />
                 </div>
             </div>
-            <div className='flex flex-col overflow-y-scroll gap-4 px-6'>
+            <div className='flex flex-col overflow-y-scroll gap-4 px-6 flex-1'>
                 {
                     cartProducts.map(product => (
                         <OrderCard
@@ -42,11 +56,12 @@ const CheckoutSideMenu = () => {
                     ))
                 }
             </div>
-            <div className='p-6'>
-                <p className='flex justify-between items-center'>
+            <div className='px-6 mb-6'>
+                <p className='flex justify-between items-center mb-2'>
                     <span className='font-light'>Total:</span>
                     <span className='font-medium text-2xl'>$ {totalPrice(cartProducts)}</span>
                 </p>
+                <button className='w-full py-3 text-white bg-black rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
             </div>
         </aside>
     )
