@@ -15,7 +15,7 @@ function MyOrder() {
             MyOrder
             <div className='flex flex-col w-80 gap-4'>
                 {
-                    order?.slice(-1)[0].products.map(product => (
+                    order?.slice(-1)[0]?.products?.map(product => (
                         <OrderCard
                             key={product.id}
                             id={product.id}
