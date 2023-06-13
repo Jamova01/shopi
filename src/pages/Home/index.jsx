@@ -9,7 +9,33 @@ import Layout from '../../components/Layout'
 import ProductDetail from '../../components/ProductDetail'
 
 const Home = () => {
-    const { items, setSearchByTitle } = useContext(ShoppingCartContext)
+    const {
+        items,
+        setSearchByTitle,
+        searchByTitle,
+        filteredItems } = useContext(ShoppingCartContext)
+
+    const rederView = () => {
+        if (searchByTitle?.length > 0) {
+            if (filteredItems?.length > 0) {
+                return (
+                    filteredItems?.map(product => (
+                        <Card key={product.id} data={product} />
+                    ))
+                )
+            } else {
+                return (
+                    <div>We don&apos;t have anything</div>
+                )
+            }
+        } else {
+            return (
+                items?.map(product => (
+                    <Card key={product.id} data={product} />
+                ))
+            )
+        }
+    }
 
     return (
         <Layout>
@@ -27,9 +53,7 @@ const Home = () => {
 
             <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
                 {
-                    items?.map(product => (
-                        <Card key={product.id} data={product} />
-                    ))
+                    rederView()
                 }
             </div>
             <ProductDetail />
