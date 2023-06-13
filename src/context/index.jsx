@@ -25,6 +25,9 @@ export const ShoppingCartPrivider = ({ children }) => {
     // Shopping Cart - Order
     const [order, setOrder] = useState([])
 
+    // Get products byt title
+    const [searchByTitle, setSearchByTitle] = useState(null)
+
     // Get products
     const [items, setItems] = useState([])
     useEffect(() => {
@@ -51,7 +54,9 @@ export const ShoppingCartPrivider = ({ children }) => {
                 order,
                 setOrder,
                 items,
-                setItems
+                setItems,
+                searchByTitle,
+                setSearchByTitle
             }
         }>
             {children}
