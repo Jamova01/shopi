@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 // Context
 import { ShoppingCartContext } from '../../context'
@@ -13,6 +13,9 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 
 function MyOrder() {
     const { order } = useContext(ShoppingCartContext)
+    let { id } = useParams()
+
+    if(id === 'last') id = order?.length -1
 
     return (
         <Layout>
@@ -24,7 +27,7 @@ function MyOrder() {
             </div>
             <div className='flex flex-col w-80 gap-4'>
                 {
-                    order?.slice(-1)[0]?.products?.map(product => (
+                    order?.[id].products.map(product => (
                         <OrderCard
                             key={product.id}
                             id={product.id}
