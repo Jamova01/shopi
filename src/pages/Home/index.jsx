@@ -10,29 +10,19 @@ import ProductDetail from '../../components/ProductDetail'
 
 const Home = () => {
     const {
-        items,
         setSearchByTitle,
-        searchByTitle,
         filteredItems } = useContext(ShoppingCartContext)
 
     const rederView = () => {
-        if (searchByTitle?.length > 0) {
-            if (filteredItems?.length > 0) {
-                return (
-                    filteredItems?.map(product => (
-                        <Card key={product.id} data={product} />
-                    ))
-                )
-            } else {
-                return (
-                    <div>We don&apos;t have anything</div>
-                )
-            }
-        } else {
+        if (filteredItems?.length > 0) {
             return (
-                items?.map(product => (
+                filteredItems?.map(product => (
                     <Card key={product.id} data={product} />
                 ))
+            )
+        } else {
+            return (
+                <div>We don&apos;t have anything</div>
             )
         }
     }
