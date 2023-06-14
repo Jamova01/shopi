@@ -4,7 +4,7 @@ import { ShoppingCartContext } from '../../context';
 import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 
 const Navbar = () => {
-    const { count, setSearchByCategory } = useContext(ShoppingCartContext)
+    const { cartProducts, setSearchByCategory } = useContext(ShoppingCartContext)
     const activeStyle = 'underline underline-offset-4';
 
     return (
@@ -120,7 +120,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className='flex items-center'>
-                    <ShoppingBagIcon className='w-6 h-6 text-black' /> {count}
+                    <ShoppingBagIcon className='w-6 h-6 text-black' /> {cartProducts.length}
                 </li>
             </ul>
         </nav>
