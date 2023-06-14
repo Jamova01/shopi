@@ -12,7 +12,8 @@ const CheckoutSideMenu = () => {
         cartProducts,
         setCartProducts,
         order,
-        setOrder } = useContext(ShoppingCartContext)
+        setOrder,
+        setSearchByTitle } = useContext(ShoppingCartContext)
 
     const handleDelete = (id) => {
         const filteredProducts = cartProducts.filter(product => product.id != id)
@@ -28,6 +29,7 @@ const CheckoutSideMenu = () => {
         }
         setOrder([...order, orderToAdd])
         setCartProducts([])
+        setSearchByTitle(null)
     }
 
     return (
