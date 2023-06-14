@@ -30,7 +30,7 @@ export const ShoppingCartPrivider = ({ children }) => {
 
     // Get products byt category
     const [searchByCategory, setSearchByCategory] = useState('')
-    console.log(searchByCategory);
+
     // Get products
     const [items, setItems] = useState([])
     const [filteredItems, setFilteredItems] = useState([])
